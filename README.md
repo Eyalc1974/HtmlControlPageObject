@@ -8,7 +8,7 @@ and also the testing (test class) phase,
 
 see Page login as example of your pages >> using attributes and reflictions
 
- public class LoginPage : BasePage
+    public class LoginPage : BasePage
     {
         [HtmlControl("txtUsername", SearchBy.Id)]
         public HtmlControlTextBox UserName { get; set; }
@@ -40,20 +40,20 @@ see Page login as example of your pages >> using attributes and reflictions
 
 // --------------------------------------
 
-Adn this is the test itself 
+And this is the test itself 
 
- [TestMethod]
-        public void TestMethod1()
-        {
-            
-                WebRunner webRunner;
-                webRunner = new WebRunner(TestProfile.IEProfile);
-                LoginPage loginPage = new LoginPage(webRunner);
-                loginPage.UserName.Text = "User1";
-                loginPage.Pass.Text = "MyPassword";
-                loginPage.LoginBtn.Click();
-                //Assert.IsTrue("TBD");
-                webRunner.Close();
 
-            
-        }
+ public void TestMethod1()
+  {
+         
+     WebRunner webRunner;
+     webRunner = new WebRunner(TestProfile.IEProfile);
+     LoginPage loginPage = new LoginPage(webRunner);
+     loginPage.UserName.Text = "User1";
+     loginPage.Pass.Text = "MyPassword";
+     loginPage.LoginBtn.Click();
+     //Assert.IsTrue("TBD");
+      webRunner.Close();
+
+          
+   }
