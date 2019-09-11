@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NG.Automation.Core.Containers.BaseContainer" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCIAAAAAAAAAIAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Containers\BaseContainer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NG.Automation.Core.Containers.BaseFrame" Collapsed="true">
+    <Position X="1.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAAAAAIAAAAAAAAEAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Containers\BaseFrame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NG.Automation.Core.Containers.BaseGroupControlPage" Collapsed="true">
+    <Position X="5.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAAAAAIAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Containers\BaseGroupControlPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NG.Automation.Core.Containers.BasePage" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIIAAAEAAAAIAAAAAACAAAAAQAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Containers\BasePage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
