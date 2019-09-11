@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Pages;
 using Automation.Core.Infrastructure;
+using Pages.PagesPO;
 
-namespace Tests
+namespace Tests_example
 {
     [TestClass]
     public class UnitTest1
