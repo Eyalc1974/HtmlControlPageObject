@@ -1,6 +1,6 @@
-﻿using NG.Automation.Core.Attributes;
-using NG.Automation.Core.Controls;
-using NG.Automation.Core.Infrastructure;
+﻿using Automation.Core.Attributes;
+using Automation.Core.Controls;
+using Automation.Core.Infrastructure;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NG.Automation.Core.Containers
+namespace Automation.Core.Containers
 {
     
     public class HtmlGroupControl : HtmlControlBase, Containers.IBaseContainer

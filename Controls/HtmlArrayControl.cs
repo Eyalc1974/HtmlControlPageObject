@@ -1,7 +1,7 @@
-﻿using NG.Automation.Core.Attributes;
-using NG.Automation.Core.Containers;
-using NG.Automation.Core.Infrastructure;
-using NG.Automation.Core.Logging;
+﻿using Automation.Core.Attributes;
+using Automation.Core.Containers;
+using Automation.Core.Infrastructure;
+using Automation.Core.Logging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 using System;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace NG.Automation.Core.Controls
+namespace Automation.Core.Controls
 {
     public class HtmlArrayControl<T> : HtmlControlBase where T : class
     {
@@ -66,7 +66,7 @@ namespace NG.Automation.Core.Controls
                               }
                                else
                                 {
-                                  HtmlControlBase[] arr = NG.Automation.Core.Factory.HtmlControlFactory.CreateElements(m_pi, Parent);
+                                  HtmlControlBase[] arr = Automation.Core.Factory.HtmlControlFactory.CreateElements(m_pi, Parent);
                                   List<T> list = new List<T>();
                                   arr.ToList().ForEach(html => list.Add(html as T));
                                   _arrT = list.ToArray();

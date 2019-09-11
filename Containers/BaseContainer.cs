@@ -1,4 +1,4 @@
-﻿using NG.Automation.Core.Infrastructure;
+﻿using Automation.Core.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NG.Automation.Core.Containers
+namespace Automation.Core.Containers
 {
     public abstract class BaseContainer : IBaseContainer
     {

@@ -9,8 +9,8 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Chrome;
-using NG.Automation.Core;
-using NG.Automation.Core.Logging;
+using Automation.Core;
+using Automation.Core.Logging;
 using System.Net;
 using WindowsInput;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -22,12 +22,12 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Internal;
-using NG.Automation.Core.Infrastructure;
-using NG.Automation.Core.Exceptions;
+using Automation.Core.Infrastructure;
+using Automation.Core.Exceptions;
 
 
 
-namespace NG.Automation.Core.Infrastructure
+namespace Automation.Core.Infrastructure
 {
     public static class Extensions
     {

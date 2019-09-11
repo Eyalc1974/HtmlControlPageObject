@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NG.Automation.Core.Infrastructure
+namespace Automation.Core.Infrastructure
 {
     public class TestProfile
     {

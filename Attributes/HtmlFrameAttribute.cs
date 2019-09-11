@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NG.Automation.Core.Attributes
+namespace Automation.Core.Attributes
 {
     public class HtmlFrameAttribute : Attribute
     {

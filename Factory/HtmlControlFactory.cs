@@ -1,8 +1,8 @@
-﻿using NG.Automation.Core.Attributes;
-using NG.Automation.Core.Containers;
-using NG.Automation.Core.Controls;
-using NG.Automation.Core.Infrastructure;
-using NG.Automation.Core.Logging;
+﻿using Automation.Core.Attributes;
+using Automation.Core.Containers;
+using Automation.Core.Controls;
+using Automation.Core.Infrastructure;
+using Automation.Core.Logging;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace NG.Automation.Core.Factory
+namespace Automation.Core.Factory
 {
     static class HtmlControlFactory
     {
@@ -36,7 +36,7 @@ namespace NG.Automation.Core.Factory
             if(container is BasePage)
                 (container as BasePage).WaitToLoad();
 
-            NG.Automation.Core.Logging.Log.WriteMessage("-------------  HtmlControlFactory:InitializeControlProperties of page " + container.GetType().ToString() +  "------------- ", true);
+            Automation.Core.Logging.Log.WriteMessage("-------------  HtmlControlFactory:InitializeControlProperties of page " + container.GetType().ToString() +  "------------- ", true);
             container.WaitToLoad();
 
             PropertyInfo[] properties = container.GetType().GetProperties(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
@@ -59,7 +59,7 @@ namespace NG.Automation.Core.Factory
                         Controls.HtmlControlBase[] array = Factory.HtmlControlFactory.CreateElements(pi, container);
                         //create array of objects
                         object baseControl = Activator.CreateInstance(pi.PropertyType, array, pi, html, container);
-                        NG.Automation.Core.Logging.Log.WriteMessage("The control: " + baseControl.GetType().ToString() +
+                        Automation.Core.Logging.Log.WriteMessage("The control: " + baseControl.GetType().ToString() +
                             " , genreated and set in page: " + container.GetType().ToString(), true);
                         pi.SetValue(container, baseControl, null);
                     }
@@ -198,25 +198,25 @@ namespace NG.Automation.Core.Factory
             {
                 switch (atrrCtrl.SearchBy)
                 {
-                    case NG.Automation.Core.Attributes.SearchBy.Id:
+                    case Automation.Core.Attributes.SearchBy.Id:
                         elem = grpCtrlElment.FindElement(By.Id(atrrCtrl.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Name:
+                    case Automation.Core.Attributes.SearchBy.Name:
                         elem = grpCtrlElment.FindElement(By.Name(atrrCtrl.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.CssSelector:
+                    case Automation.Core.Attributes.SearchBy.CssSelector:
                         elem = grpCtrlElment.FindElement(By.CssSelector(atrrCtrl.DomAddressLocator));                        
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.ClassName:
+                    case Automation.Core.Attributes.SearchBy.ClassName:
                         elem = grpCtrlElment.FindElement(By.ClassName(atrrCtrl.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Xpath:
+                    case Automation.Core.Attributes.SearchBy.Xpath:
                         elem = grpCtrlElment.FindElement(By.XPath(atrrCtrl.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Link:
+                    case Automation.Core.Attributes.SearchBy.Link:
                         elem = grpCtrlElment.FindElement(By.LinkText(atrrCtrl.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.PartialLink:
+                    case Automation.Core.Attributes.SearchBy.PartialLink:
                         elem = grpCtrlElment.FindElement(By.PartialLinkText(atrrCtrl.DomAddressLocator));
                         break;
                     default:
@@ -225,7 +225,7 @@ namespace NG.Automation.Core.Factory
             }
             catch (NoSuchElementException ex)
             {
-                NG.Automation.Core.Logging.Log.WriteError("Failed locating Html element", ex);
+                Automation.Core.Logging.Log.WriteError("Failed locating Html element", ex);
                 elem = null;
             }
 
@@ -242,13 +242,13 @@ namespace NG.Automation.Core.Factory
                 throw new Exception("Proerty is not Html Element");
 
             IWebElement elem = LocateElement(container.WebRunner, html);
-            NG.Automation.Core.Logging.Log.WriteMessage("HtmlControlFactory :CreateElement(), creating Control wrapped with element above");
+            Automation.Core.Logging.Log.WriteMessage("HtmlControlFactory :CreateElement(), creating Control wrapped with element above");
             return CreateControl(control.Name, elem, "", html, container);
 
         }
 
         private static Controls.HtmlControlBase CreateControl(string controlName, IWebElement elem, string name,
-            Attributes.HtmlControlAttribute html, IBaseContainer container) //string controlName
+            HtmlControlAttribute html, IBaseContainer container) //string controlName
         {
             switch (controlName)
             {
@@ -300,7 +300,7 @@ namespace NG.Automation.Core.Factory
                 controlName = pi.PropertyType.GetGenericArguments()[0].Name;
             }            
 
-            NG.Automation.Core.Logging.Log.WriteMessage("HtmlControlFactory :CreateElements(), creating Controls:" + controlName ,true );
+            Automation.Core.Logging.Log.WriteMessage("HtmlControlFactory :CreateElements(), creating Controls:" + controlName ,true );
 
             foreach (IWebElement elem in elems)
             {
@@ -316,7 +316,7 @@ namespace NG.Automation.Core.Factory
             }
             return result.ToArray();
         }        
-        private static IList<IWebElement> LocateElements(BasePage container, Attributes.HtmlControlAttribute html, string parentlocator)
+        private static IList<IWebElement> LocateElements(Automation.Core.Containers.BasePage container, Attributes.HtmlControlAttribute html, string parentlocator)
         {
             IList<IWebElement> elemnts = null;
 
@@ -337,31 +337,31 @@ namespace NG.Automation.Core.Factory
             {
                 switch (html.SearchBy)
                 {
-                    case NG.Automation.Core.Attributes.SearchBy.Id:
+                    case Automation.Core.Attributes.SearchBy.Id:
                         elemnts = container.WebRunner.m_driver.FindElement(By.CssSelector(parentlocator)).FindElements(By.Id(html.DomAddressLocator));
                         //myby = By.Id(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Name:
+                    case Automation.Core.Attributes.SearchBy.Name:
                         elemnts = container.WebRunner.m_driver.FindElement(By.CssSelector(parentlocator)).FindElements(By.Name(html.DomAddressLocator));
                         //myby = By.Name(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.CssSelector:
+                    case Automation.Core.Attributes.SearchBy.CssSelector:
                         elemnts = container.WebRunner.m_driver.FindElement(By.CssSelector(parentlocator)).FindElements(By.CssSelector(html.DomAddressLocator));
                         //myby = By.CssSelector(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.ClassName:
+                    case Automation.Core.Attributes.SearchBy.ClassName:
                         elemnts = container.WebRunner.m_driver.FindElement(By.CssSelector(parentlocator)).FindElements(By.ClassName(html.DomAddressLocator));
                         //myby = By.ClassName(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Xpath:
+                    case Automation.Core.Attributes.SearchBy.Xpath:
                         elemnts = container.WebRunner.m_driver.FindElement(By.CssSelector(parentlocator)).FindElements(By.XPath(html.DomAddressLocator));
                         //myby = By.XPath(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Link:
+                    case Automation.Core.Attributes.SearchBy.Link:
                         elemnts = container.WebRunner.m_driver.FindElement(By.CssSelector(parentlocator)).FindElements(By.LinkText(html.DomAddressLocator));
                         //myby = By.LinkText(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.PartialLink:
+                    case Automation.Core.Attributes.SearchBy.PartialLink:
                         elemnts = container.WebRunner.m_driver.FindElement(By.CssSelector(parentlocator)).FindElements(By.PartialLinkText(html.DomAddressLocator));
                         //myby = By.PartialLinkText(html.DomAddressLocator);
                         break;
@@ -371,7 +371,7 @@ namespace NG.Automation.Core.Factory
             }
             catch (Exception ex)
             {
-                NG.Automation.Core.Logging.Log.WriteError("Failed locating Html elements.", ex);
+                Automation.Core.Logging.Log.WriteError("Failed locating Html elements.", ex);
                 elemnts = null;
             }
 
@@ -388,31 +388,31 @@ namespace NG.Automation.Core.Factory
             {
                 switch (html.SearchBy)
                 {
-                    case NG.Automation.Core.Attributes.SearchBy.Id:
+                    case Automation.Core.Attributes.SearchBy.Id:
                         elem = runner.m_driver.FindElement(By.Id(html.DomAddressLocator));
                         //myby = (By.Id(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Name:
+                    case Automation.Core.Attributes.SearchBy.Name:
                         elem = runner.m_driver.FindElement(By.Name(html.DomAddressLocator));
                         //myby = (By.Name(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.CssSelector:
+                    case Automation.Core.Attributes.SearchBy.CssSelector:
                         elem = runner.m_driver.FindElement(By.CssSelector(html.DomAddressLocator));
                         //myby = (By.CssSelector(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.ClassName:
+                    case Automation.Core.Attributes.SearchBy.ClassName:
                         elem = runner.m_driver.FindElement(By.ClassName(html.DomAddressLocator));
                         //myby = (By.ClassName(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Xpath:
+                    case Automation.Core.Attributes.SearchBy.Xpath:
                         elem = runner.m_driver.FindElement(By.XPath(html.DomAddressLocator));
                         //myby = (By.XPath(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Link:
+                    case Automation.Core.Attributes.SearchBy.Link:
                         elem = runner.m_driver.FindElement(By.LinkText(html.DomAddressLocator));
                         //myby = (By.LinkText(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.PartialLink:
+                    case Automation.Core.Attributes.SearchBy.PartialLink:
                         elem = runner.m_driver.FindElement(By.PartialLinkText(html.DomAddressLocator));
                         //myby = (By.PartialLinkText(html.DomAddressLocator));
                         break;
@@ -422,8 +422,8 @@ namespace NG.Automation.Core.Factory
             }
             catch (NoSuchElementException ex) 
             {
-                NG.Automation.Core.Logging.Log.WriteMessage("Element not found, perhaps page is not loaded yet or element not found in page:", true);
-                NG.Automation.Core.Logging.Log.WriteMessage("Failed locating Html element in page by: "
+                Automation.Core.Logging.Log.WriteMessage("Element not found, perhaps page is not loaded yet or element not found in page:", true);
+                Automation.Core.Logging.Log.WriteMessage("Failed locating Html element in page by: "
                     + html.DomAddressLocator + " , Error :" + ex.Message, true);
                 elem = null; 
             }
@@ -461,25 +461,25 @@ namespace NG.Automation.Core.Factory
                 Attributes.HtmlControlAttribute _html = html;
                 switch (_html.SearchBy)
                 {
-                    case NG.Automation.Core.Attributes.SearchBy.Id:
+                    case Automation.Core.Attributes.SearchBy.Id:
                         elem = CurrentContainer.WebRunner.m_driver.WaitForElementAjax(By.Id(_html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Name:
+                    case Automation.Core.Attributes.SearchBy.Name:
                         elem = CurrentContainer.WebRunner.m_driver.WaitForElementAjax(By.Name(_html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.CssSelector:
+                    case Automation.Core.Attributes.SearchBy.CssSelector:
                         elem = CurrentContainer.WebRunner.m_driver.WaitForElementAjax(By.CssSelector(_html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.ClassName:
+                    case Automation.Core.Attributes.SearchBy.ClassName:
                         elem = CurrentContainer.WebRunner.m_driver.WaitForElementAjax(By.ClassName(_html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Xpath:
+                    case Automation.Core.Attributes.SearchBy.Xpath:
                         elem = CurrentContainer.WebRunner.m_driver.WaitForElementAjax(By.XPath(_html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Link:
+                    case Automation.Core.Attributes.SearchBy.Link:
                         elem = CurrentContainer.WebRunner.m_driver.WaitForElementAjax(By.LinkText(_html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.PartialLink:
+                    case Automation.Core.Attributes.SearchBy.PartialLink:
                         elem = CurrentContainer.WebRunner.m_driver.WaitForElementAjax(By.PartialLinkText(_html.DomAddressLocator));
                         break;
                     default:
@@ -488,7 +488,7 @@ namespace NG.Automation.Core.Factory
             }
             catch (Exception ex)
             {
-                NG.Automation.Core.Logging.Log.WriteError("Failed waiting for Html element (ajax).", ex);
+                Automation.Core.Logging.Log.WriteError("Failed waiting for Html element (ajax).", ex);
                 elem = null;
             }
 
@@ -517,31 +517,31 @@ namespace NG.Automation.Core.Factory
             {
                 switch (html.SearchBy)
                 {
-                    case NG.Automation.Core.Attributes.SearchBy.Id:
+                    case Automation.Core.Attributes.SearchBy.Id:
                         elemnts = runner.m_driver.FindElements(By.Id(html.DomAddressLocator));
                         //myby = By.Id(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Name:
+                    case Automation.Core.Attributes.SearchBy.Name:
                         elemnts = runner.m_driver.FindElements(By.Name(html.DomAddressLocator));
                         //myby = By.Name(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.CssSelector:
+                    case Automation.Core.Attributes.SearchBy.CssSelector:
                         elemnts = runner.m_driver.FindElements(By.CssSelector(html.DomAddressLocator));
                         //myby = By.CssSelector(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.ClassName:
+                    case Automation.Core.Attributes.SearchBy.ClassName:
                         elemnts = runner.m_driver.FindElements(By.ClassName(html.DomAddressLocator));
                         //myby = By.ClassName(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Xpath:
+                    case Automation.Core.Attributes.SearchBy.Xpath:
                         elemnts = runner.m_driver.FindElements(By.XPath(html.DomAddressLocator));
                         //myby = By.XPath(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Link:
+                    case Automation.Core.Attributes.SearchBy.Link:
                         elemnts = runner.m_driver.FindElements(By.LinkText(html.DomAddressLocator));
                         //myby = By.LinkText(html.DomAddressLocator);
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.PartialLink:
+                    case Automation.Core.Attributes.SearchBy.PartialLink:
                         elemnts = runner.m_driver.FindElements(By.PartialLinkText(html.DomAddressLocator));
                         //myby = By.PartialLinkText(html.DomAddressLocator);
                         break;
@@ -551,8 +551,8 @@ namespace NG.Automation.Core.Factory
             }
             catch (NoSuchElementException ex)
             {
-                NG.Automation.Core.Logging.Log.WriteMessage("Element not found, perhaps page is not loaded yet or element not found in page:", true);
-                NG.Automation.Core.Logging.Log.WriteMessage("Failed locating Html element in page by: "
+                Automation.Core.Logging.Log.WriteMessage("Element not found, perhaps page is not loaded yet or element not found in page:", true);
+                Automation.Core.Logging.Log.WriteMessage("Failed locating Html element in page by: "
                     + html.DomAddressLocator + " , Error :" + ex.Message, true);
                 elemnts = null; 
             }

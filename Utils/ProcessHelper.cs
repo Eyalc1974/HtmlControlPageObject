@@ -7,7 +7,7 @@ using System.Management;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace NG.Automation.Core.Utils
+namespace Automation.Core.Utils
 {
     public class ProcessHelper
     {

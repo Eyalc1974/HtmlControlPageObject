@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NG.Automation.Core.Attributes
+namespace Automation.Core.Attributes
 {
     public class HtmlControlAttribute : Attribute, ICloneable
     {

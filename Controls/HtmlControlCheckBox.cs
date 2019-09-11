@@ -1,7 +1,7 @@
-﻿using NG.Automation.Core.Attributes;
-using NG.Automation.Core.Containers;
-using NG.Automation.Core.Infrastructure;
-using NG.Automation.Core.Logging;
+﻿using Automation.Core.Attributes;
+using Automation.Core.Containers;
+using Automation.Core.Infrastructure;
+using Automation.Core.Logging;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NG.Automation.Core.Controls
+namespace Automation.Core.Controls
 {
     public class HtmlControlCheckBox : HtmlControlBase
     {

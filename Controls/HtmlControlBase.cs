@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NG.Automation.Core.Attributes;
-using NG.Automation.Core.Containers;
-using NG.Automation.Core.Infrastructure;
-using NG.Automation.Core.Logging;
+using Automation.Core.Attributes;
+using Automation.Core.Containers;
+using Automation.Core.Infrastructure;
+using Automation.Core.Logging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 using System;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace NG.Automation.Core.Controls
+namespace Automation.Core.Controls
 {
     public abstract class HtmlControlBase
     {
@@ -237,25 +237,25 @@ namespace NG.Automation.Core.Controls
                 Attributes.HtmlControlAttribute html = HtmlControlAttribute;
                 switch (html.SearchBy)
                 {
-                    case NG.Automation.Core.Attributes.SearchBy.Id:
+                    case Automation.Core.Attributes.SearchBy.Id:
                         elem = Parent.WebRunner.m_driver.WaitForElementAjax(By.Id(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Name:
+                    case Automation.Core.Attributes.SearchBy.Name:
                         elem = Parent.WebRunner.m_driver.WaitForElementAjax(By.Name(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.CssSelector:
+                    case Automation.Core.Attributes.SearchBy.CssSelector:
                         elem = Parent.WebRunner.m_driver.WaitForElementAjax(By.CssSelector(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.ClassName:
+                    case Automation.Core.Attributes.SearchBy.ClassName:
                         elem = Parent.WebRunner.m_driver.WaitForElementAjax(By.ClassName(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Xpath:
+                    case Automation.Core.Attributes.SearchBy.Xpath:
                         elem = Parent.WebRunner.m_driver.WaitForElementAjax(By.XPath(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Link:
+                    case Automation.Core.Attributes.SearchBy.Link:
                         elem = Parent.WebRunner.m_driver.WaitForElementAjax(By.LinkText(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.PartialLink:
+                    case Automation.Core.Attributes.SearchBy.PartialLink:
                         elem = Parent.WebRunner.m_driver.WaitForElementAjax(By.PartialLinkText(html.DomAddressLocator));
                         break;
                     default:
@@ -264,7 +264,7 @@ namespace NG.Automation.Core.Controls
             }
             catch (Exception ex)
             {
-                NG.Automation.Core.Logging.Log.WriteError("Failed waiting for Html element (ajax).", ex, true);
+                Automation.Core.Logging.Log.WriteError("Failed waiting for Html element (ajax).", ex, true);
                 elem = null;
             }
 
@@ -292,28 +292,28 @@ namespace NG.Automation.Core.Controls
                 Attributes.HtmlControlAttribute html = HtmlControlAttribute;
                 switch (html.SearchBy)
                 {
-                    case NG.Automation.Core.Attributes.SearchBy.Id:
+                    case Automation.Core.Attributes.SearchBy.Id:
                         elem = Parent.WebRunner.m_driver.WaitForElement(By.Id(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Name:
+                    case Automation.Core.Attributes.SearchBy.Name:
                         elem = Parent.WebRunner.m_driver.WaitForElement(By.Name(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.CssSelector:
+                    case Automation.Core.Attributes.SearchBy.CssSelector:
                         elem = Parent.WebRunner.m_driver.WaitForElement(By.CssSelector(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.ClassName:
+                    case Automation.Core.Attributes.SearchBy.ClassName:
                         elem = Parent.WebRunner.m_driver.WaitForElement(By.ClassName(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Xpath:
+                    case Automation.Core.Attributes.SearchBy.Xpath:
                         elem = Parent.WebRunner.m_driver.WaitForElement(By.XPath(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.Link:
+                    case Automation.Core.Attributes.SearchBy.Link:
                         elem = Parent.WebRunner.m_driver.WaitForElement(By.LinkText(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.PartialLink:
+                    case Automation.Core.Attributes.SearchBy.PartialLink:
                         elem = Parent.WebRunner.m_driver.WaitForElement(By.PartialLinkText(html.DomAddressLocator));
                         break;
-                    case NG.Automation.Core.Attributes.SearchBy.JavaScript:
+                    case Automation.Core.Attributes.SearchBy.JavaScript:
                         elem = (IWebElement)GetElementFromJavaScript();
                         break;
                     default:
@@ -322,7 +322,7 @@ namespace NG.Automation.Core.Controls
             }
             catch (Exception ex)
             {
-                NG.Automation.Core.Logging.Log.WriteError("Failed waiting for Html element", ex, true);
+                Automation.Core.Logging.Log.WriteError("Failed waiting for Html element", ex, true);
                 elem = null;
             }
 
@@ -337,7 +337,7 @@ namespace NG.Automation.Core.Controls
             }
             catch (Exception ex)
             {
-                NG.Automation.Core.Logging.Log.WriteError("Failed getting element from javascript", ex);
+                Automation.Core.Logging.Log.WriteError("Failed getting element from javascript", ex);
             }
             return string.Empty;
         }

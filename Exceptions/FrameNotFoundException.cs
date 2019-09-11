@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NG.Automation.Core.Exceptions
+namespace Automation.Core.Exceptions
 {
     public class FrameNotFoundException : Exception
     {

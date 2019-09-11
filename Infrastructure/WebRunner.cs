@@ -1,4 +1,4 @@
-﻿using NG.Automation.Core.Logging;
+﻿using Automation.Core.Logging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Appium.iOS;
@@ -15,13 +15,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using NG.Automation.Core.Infrastructure;
+using Automation.Core.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.ObjectModel;
 using System.Collections;
 using WindowsInput;
 
-namespace NG.Automation.Core.Infrastructure
+namespace Automation.Core.Infrastructure
 {
     public enum BrowserPlatform
     {

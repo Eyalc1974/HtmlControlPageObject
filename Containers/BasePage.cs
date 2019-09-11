@@ -1,5 +1,5 @@
-﻿using NG.Automation.Core.Infrastructure;
-using NG.Automation.Core.Logging;
+﻿using Automation.Core.Infrastructure;
+using Automation.Core.Logging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Interfaces;
 using System;
@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 
-namespace NG.Automation.Core.Containers
+namespace Automation.Core.Containers
 {
     /// <summary>
     /// Base page for all pages in the test projects

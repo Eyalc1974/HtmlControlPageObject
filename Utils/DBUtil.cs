@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NG.Automation.Core.Utils
+namespace Automation.Core.Utils
 {
     public static class DBUtil
     {

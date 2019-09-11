@@ -7,7 +7,7 @@ using log4net.Config;
 using System.IO;
 using System.Configuration;
 
-namespace NG.Automation.Core.Logging
+namespace Automation.Core.Logging
 {
     public class Log
     {        

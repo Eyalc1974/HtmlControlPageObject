@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NG.Automation.Core.Infrastructure
+namespace Automation.Core.Infrastructure
 {
     public class JSWaiter
     {        

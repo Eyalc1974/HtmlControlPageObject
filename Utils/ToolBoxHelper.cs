@@ -12,7 +12,7 @@ using System.Web.Script.Serialization;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace NG.Automation.Core.Utils
+namespace Automation.Core.Utils
 {
     public class ToolBoxHelper
     {

@@ -1,25 +1,25 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using NG.Automation.Core;
+using Automation.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NG.Automation.Core.Infrastructure;
-using NG.Automation.Core.Attributes;
+using Automation.Core.Infrastructure;
+using Automation.Core.Attributes;
 using System.Threading;
-using NG.Automation.Core.Factory;
-using NG.Automation.Core.Containers;
+using Automation.Core.Factory;
+using Automation.Core.Containers;
 
 
 
-namespace NG.Automation.Core.Controls
+namespace Automation.Core.Controls
 {
     public class HtmlControlTextBox : HtmlControlBase
     {
         private string m_text;                                   
 
-        public HtmlControlTextBox(OpenQA.Selenium.IWebElement elem, string displayName, HtmlControlAttribute attribute, IBaseContainer container)
+        public HtmlControlTextBox(OpenQA.Selenium.IWebElement elem, string displayName, Attributes.HtmlControlAttribute attribute, Containers.IBaseContainer container)
             : base(elem, displayName, attribute, container)
         {
             WaitForPageContainerToLoad();
