@@ -25,11 +25,7 @@ see Page login as example of your pages >> using attributes and reflictions
         private WebRunner m_webRunner;
         public static string PageUrl = string.Empty;
 
-        /// <summary>
-        /// pass the test runner only when the current test contains more than one instance of browser and you need more than 1 selenium driver
-        /// </summary>
-        /// <param name="runner"></param>
-
+        
         public LoginPage(WebRunner runner)
             : base(runner)
         {
@@ -60,3 +56,10 @@ And this is the test itself
 
           
    }
+
+
+
+
+
+
+
